@@ -54,6 +54,8 @@ namespace Unity.FPS.AI
         [Header("Flash on hit")] [Tooltip("The material used for the body of the hoverbot")]
         public Material BodyMaterial;
 
+        public float EmissionIntensity = 5f;
+
         [Tooltip("The gradient representing the color of the flash on hit")] [GradientUsageAttribute(true)]
         public Gradient OnHitBodyGradient;
 
@@ -83,6 +85,10 @@ namespace Unity.FPS.AI
 
         [Tooltip("Color of the sphere gizmo representing the detection range")]
         public Color DetectionRangeColor = Color.blue;
+
+        [Header("Health Emission Settings")]
+        public Color LowHealthColor = Color.red;
+        public Color HighHealthColor = Color.blue;
 
         public UnityAction onAttack;
         public UnityAction onDetectedTarget;
@@ -117,6 +123,8 @@ namespace Unity.FPS.AI
         WeaponController m_CurrentWeapon;
         WeaponController[] m_Weapons;
         NavigationModule m_NavigationModule;
+
+
 
         void Start()
         {
@@ -198,6 +206,7 @@ namespace Unity.FPS.AI
                 m_EyeRendererData.Renderer.SetPropertyBlock(m_EyeColorMaterialPropertyBlock,
                     m_EyeRendererData.MaterialIndex);
             }
+
         }
 
         void Update()
@@ -206,15 +215,60 @@ namespace Unity.FPS.AI
 
             DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
 
-            Color currentColor = OnHitBodyGradient.Evaluate((Time.time - m_LastTimeDamaged) / FlashOnHitDuration);
-            m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", currentColor);
+            float healthRatio = m_Health.CurrentHealth / m_Health.MaxHealth;
+            Color healthEmissionColor = Color.Lerp(Color.red, Color.blue, healthRatio);
+            Color scaledHealthEmission = healthEmissionColor * EmissionIntensity;
+
+            float timeSinceHit = Time.time - m_LastTimeDamaged;
+            Color finalEmissionColor;
+
+            if (timeSinceHit < FlashOnHitDuration)
+            {
+                float flashLerp = timeSinceHit / FlashOnHitDuration;
+                Color flashColor = OnHitBodyGradient.Evaluate(0f);
+                finalEmissionColor = Color.Lerp(flashColor, scaledHealthEmission, flashLerp);
+            }
+            else
+            {
+                finalEmissionColor = scaledHealthEmission;
+            }
+
+            m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", finalEmissionColor);
+
             foreach (var data in m_BodyRenderers)
             {
+                if (data.Renderer == null)
+                {
+                    Debug.LogWarning("Renderer is null in m_BodyRenderers.");
+                    continue;
+                }
+
+                // Apply to property block
                 data.Renderer.SetPropertyBlock(m_BodyFlashMaterialPropertyBlock, data.MaterialIndex);
+
+                // DEBUG: Also directly set the material for testing (remove later)
+                Material[] materials = data.Renderer.sharedMaterials;
+                if (materials.Length > data.MaterialIndex)
+                {
+                    materials[data.MaterialIndex].SetColor("_EmissionColor", finalEmissionColor);
+                    materials[data.MaterialIndex].EnableKeyword("_EMISSION");
+                }
             }
 
             m_WasDamagedThisFrame = false;
+
+            Debug.Log($"Emission color applied: {finalEmissionColor}");
+
+            Color finalEmissionColorHDR = finalEmissionColor.linear * EmissionIntensity;
+            m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", finalEmissionColorHDR);
+            
+
+            m_BodyFlashMaterialPropertyBlock.SetTexture("_EmissionMap", null);
+            m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", finalEmissionColor);
         }
+
+
+
 
         void EnsureIsWithinLevelBounds()
         {

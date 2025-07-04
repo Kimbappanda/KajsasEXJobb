@@ -118,6 +118,7 @@ MonoBehaviour:
   DefaultEyeColor: {r: 23.849056, g: 7.292185, b: 0, a: 1}
   AttackEyeColor: {r: 32, g: 1.4610044, b: 0, a: 1}
   BodyMaterial: {fileID: 2100000, guid: c3dc5a90c49c99142999f85d6b419d80, type: 2}
+  EmissionIntensity: 1
   OnHitBodyGradient:
     serializedVersion: 2
     key0: {r: 0, g: 0, b: 0, a: 1}
@@ -158,7 +159,9 @@ MonoBehaviour:
   DropRate: 1
   PathReachingRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   AttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
-  DetectionRangeColor: {r: 0, g: 0, b: 1, a: 1}
+  DetectionRangeColor: {r: 0, g: 0.22837114, b: 1, a: 1}
+  LowHealthColor: {r: 1, g: 0, b: 0, a: 1}
+  HighHealthColor: {r: 0, g: 0.5900984, b: 1, a: 1}
 --- !u!114 &4752156053906186385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,11 +220,6 @@ MonoBehaviour:
   HealthBarImage: {fileID: 5299349968446827641}
   HealthBarPivot: {fileID: 3175718064325614203}
   HideFullHealthBar: 1
-  HealthEnemyRenderer: {fileID: 13700004, guid: 8e64c7aa328349d4ea713298f19a414f,
-    type: 3}
-  MaxEmissionIntensity: 5
-  FullHealthEmissionColor: {r: 0, g: 0, b: 1, a: 1}
-  LowHealthEmissionColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!195 &7406548990343174644
 NavMeshAgent:
   m_ObjectHideFlags: 0
