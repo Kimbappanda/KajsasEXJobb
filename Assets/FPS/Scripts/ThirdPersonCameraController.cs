@@ -10,6 +10,10 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private float pitch = 0f;
 
+    [Header("Rotation")]
+    [Tooltip("Rotation speed for moving the camera")]
+    public float RotationSpeed = 200f;
+
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity;
@@ -26,5 +30,7 @@ public class ThirdPersonCameraController : MonoBehaviour
         cameraPivot.localRotation = Quaternion.Euler(pitch, 0, 0);
 
     }
+
+
 }
 

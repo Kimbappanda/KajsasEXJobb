@@ -44,8 +44,8 @@ namespace Unity.FPS.Gameplay
         [Tooltip("Height at which the player dies instantly when falling off the map")]
         public float KillHeight = -50f;
 
-        [Header("Rotation")] [Tooltip("Rotation speed for moving the camera")]
-        public float RotationSpeed = 200f;
+//        [Header("Rotation")] [Tooltip("Rotation speed for moving the camera")]
+//        public float RotationSpeed = 200f;
 
         [Range(0.1f, 1f)] [Tooltip("Rotation speed multiplier when aiming")]
         public float AimingRotationMultiplier = 0.4f;
@@ -53,8 +53,8 @@ namespace Unity.FPS.Gameplay
         [Header("Jump")] [Tooltip("Force applied upward when jumping")]
         public float JumpForce = 9f;
 
-        [Header("Stance")] [Tooltip("Ratio (0-1) of the character height where the camera will be at")]
-        public float CameraHeightRatio = 0.9f;
+//        [Header("Stance")] [Tooltip("Ratio (0-1) of the character height where the camera will be at")]
+//        public float CameraHeightRatio = 0.9f;
 
         [Tooltip("Height of character when standing")]
         public float CapsuleHeightStanding = 1.8f;
@@ -418,7 +418,7 @@ namespace Unity.FPS.Gameplay
             {
                 m_Controller.height = m_TargetCharacterHeight;
                 m_Controller.center = Vector3.up * m_Controller.height * 0.5f;
-                PlayerCamera.transform.localPosition = Vector3.up * m_TargetCharacterHeight * CameraHeightRatio;
+//                PlayerCamera.transform.localPosition = Vector3.up * m_TargetCharacterHeight * CameraHeightRatio;
                 m_Actor.AimPoint.transform.localPosition = m_Controller.center;
             }
             // Update smooth height
@@ -428,8 +428,8 @@ namespace Unity.FPS.Gameplay
                 m_Controller.height = Mathf.Lerp(m_Controller.height, m_TargetCharacterHeight,
                     CrouchingSharpness * Time.deltaTime);
                 m_Controller.center = Vector3.up * m_Controller.height * 0.5f;
-                PlayerCamera.transform.localPosition = Vector3.Lerp(PlayerCamera.transform.localPosition,
-                    Vector3.up * m_TargetCharacterHeight * CameraHeightRatio, CrouchingSharpness * Time.deltaTime);
+//                PlayerCamera.transform.localPosition = Vector3.Lerp(PlayerCamera.transform.localPosition,
+//                    Vector3.up * m_TargetCharacterHeight * CameraHeightRatio, CrouchingSharpness * Time.deltaTime);
                 m_Actor.AimPoint.transform.localPosition = m_Controller.center;
             }
         }
