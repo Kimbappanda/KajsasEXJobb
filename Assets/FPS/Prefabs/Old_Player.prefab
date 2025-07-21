@@ -1079,7 +1079,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7253983127304857660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7020f6052b590a46af87e3dbc155f11, type: 3}
   m_Name: 
@@ -1089,6 +1089,7 @@ MonoBehaviour:
   sensitivity: 2
   minPitch: -30
   maxPitch: 60
+  RotationSpeed: 200
 --- !u!1 &8233985022118926012
 GameObject:
   m_ObjectHideFlags: 0

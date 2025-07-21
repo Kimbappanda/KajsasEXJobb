@@ -151,3 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780f41341aceb5f448ab4211961d6408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vfxHitGreen: {fileID: 3199794238748414240, guid: e44fc97440f45e946a0bdbdd460acfb9,
+    type: 3}
+  vfxHitRed: {fileID: 8950624839484268201, guid: 2a8f5052fe50f7b41b17149abb0f7414,
+    type: 3}
