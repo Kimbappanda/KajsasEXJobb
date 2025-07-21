@@ -17,7 +17,6 @@ public class ThirdPersonShooterController : MonoBehaviour
     [SerializeField] private Transform spawnBulletPosition;
 
 
-
     private ThirdPersonController thirdPersonController; 
     private StarterAssetsInputs starterAssetsInputs;
 
