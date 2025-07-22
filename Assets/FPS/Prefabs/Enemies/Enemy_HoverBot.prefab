@@ -68,6 +68,8 @@ GameObject:
   - component: {fileID: 6449686686394465367}
   - component: {fileID: 797398738606809810}
   - component: {fileID: 1614318205656627459}
+  - component: {fileID: 2121838141583326879}
+  - component: {fileID: 935721036782862996}
   m_Layer: 0
   m_Name: Enemy_HoverBot
   m_TagString: Untagged
@@ -369,6 +371,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &2121838141583326879
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015434656898269652}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.4163668
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.1853083, z: 0}
+--- !u!114 &935721036782862996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015434656898269652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6611a17d4c58c2442bbd2a74effe95fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2201913640410082181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,6 +1878,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.m_NumColorKeys
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951582856014658560, guid: 3f5b545b9a1e74c418b061bba5bb9e2c,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

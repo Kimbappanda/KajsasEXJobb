@@ -206,6 +206,8 @@ GameObject:
   - component: {fileID: 8502097699347725703}
   - component: {fileID: 1345943282138014167}
   - component: {fileID: 3444686158330356048}
+  - component: {fileID: 6986992252916646658}
+  - component: {fileID: 5411087994858844200}
   m_Layer: 0
   m_Name: Enemy_Turret
   m_TagString: Untagged
@@ -404,6 +406,41 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6986992252916646658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015434656898269652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6611a17d4c58c2442bbd2a74effe95fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &5411087994858844200
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015434656898269652}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.6179314
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.30896568, z: 0}
 --- !u!1 &2201913640410082181
 GameObject:
   m_ObjectHideFlags: 0
