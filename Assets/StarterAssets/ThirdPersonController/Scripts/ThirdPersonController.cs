@@ -2,6 +2,8 @@
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
+using Unity.FPS.Game;
+using Unity.FPS.Gameplay;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -77,6 +79,9 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        [Tooltip("Height at which the player dies instantly when falling off the map")]
+        public float KillHeight = -50f;
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -88,6 +93,9 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        
+        private Unity.FPS.Game.Health m_Health;
+        public bool IsDead { get; private set; }
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -137,6 +145,11 @@ namespace StarterAssets
 
         private void Start()
         {
+            m_Health = GetComponent<Unity.FPS.Game.Health>();
+            DebugUtility.HandleErrorIfNullGetComponent<Health, FPS_PlayerCharacterController>(m_Health, this, gameObject);
+
+            m_Health.OnDie += OnDie;
+
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
             _hasAnimator = TryGetComponent(out _animator);
@@ -162,6 +175,12 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+
+            // check for Y kill
+            if (!IsDead && transform.position.y < KillHeight)
+            {
+                m_Health.Kill();
+            }
         }
 
         private void LateUpdate()
@@ -405,6 +424,13 @@ namespace StarterAssets
         public void SetRotateOnMove(bool newRotateOnMove)
         {
             _rotateOnMove = newRotateOnMove;
+        }
+
+        void OnDie()
+        {
+            IsDead = true;
+
+            EventManager.Broadcast(Events.PlayerDeathEvent);
         }
     }
 }

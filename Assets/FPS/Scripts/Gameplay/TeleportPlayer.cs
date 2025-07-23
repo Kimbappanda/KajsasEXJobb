@@ -7,12 +7,12 @@ namespace Unity.FPS.Gameplay
     // Debug script, teleports the player across the map for faster testing
     public class TeleportPlayer : MonoBehaviour
     {
-        PlayerCharacterController m_PlayerCharacterController;
+        FPS_PlayerCharacterController m_PlayerCharacterController;
 
         void Awake()
         {
-            m_PlayerCharacterController = FindFirstObjectByType<PlayerCharacterController>();
-            DebugUtility.HandleErrorIfNullFindObject<PlayerCharacterController, TeleportPlayer>(
+            m_PlayerCharacterController = FindFirstObjectByType<FPS_PlayerCharacterController>();
+            DebugUtility.HandleErrorIfNullFindObject<FPS_PlayerCharacterController, TeleportPlayer>(
                 m_PlayerCharacterController, this);
         }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.FPS.Game; // needed to access Health script
+using StarterAssets;
 
 public class BulletProjectile : MonoBehaviour
 {

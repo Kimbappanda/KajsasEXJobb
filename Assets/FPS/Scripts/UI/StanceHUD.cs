@@ -18,8 +18,8 @@ namespace Unity.FPS.UI
 
         void Start()
         {
-            PlayerCharacterController character = FindFirstObjectByType<PlayerCharacterController>();
-            DebugUtility.HandleErrorIfNullFindObject<PlayerCharacterController, StanceHUD>(character, this);
+            FPS_PlayerCharacterController character = FindFirstObjectByType<FPS_PlayerCharacterController>();
+            DebugUtility.HandleErrorIfNullFindObject<FPS_PlayerCharacterController, StanceHUD>(character, this);
             character.OnStanceChanged += OnStanceChanged;
 
             OnStanceChanged(character.IsCrouching);
