@@ -171,6 +171,7 @@ namespace MirzaBeig.VolumetricFogLite
             // You should never call CommandBuffer.SetRenderTarget. Instead call <c>ConfigureTarget</c> and <c>ConfigureClear</c>.
             // The render pipeline will ensure target setup and clearing happens in a performant manner.
 
+            [Obsolete]
             public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
             {
 
@@ -178,6 +179,7 @@ namespace MirzaBeig.VolumetricFogLite
 
             // Called before Execute().
 
+            [Obsolete]
             public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
             {
                 int fogDownsampleLevel = settings.fogDownsampleLevel;
@@ -204,6 +206,7 @@ namespace MirzaBeig.VolumetricFogLite
             // https://docs.unity3d.com/ScriptReference/Rendering.ScriptableRenderContext.html
             // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
 
+            [Obsolete]
             public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
             {
                 // Get a CommandBuffer from pool.
