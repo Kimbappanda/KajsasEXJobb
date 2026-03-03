@@ -59,7 +59,7 @@ namespace Unity.FPS.Gameplay
             m_MoveAction.Enable();
             m_LookAction.Enable();
             m_JumpAction.Enable();
-            m_FireAction.Enable();
+           // m_FireAction.Enable();
             m_AimAction.Enable();
             m_SprintAction.Enable();
             m_CrouchAction.Enable();
