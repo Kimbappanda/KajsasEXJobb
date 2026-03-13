@@ -86,9 +86,9 @@ namespace Unity.FPS.AI
         [Tooltip("Color of the sphere gizmo representing the detection range")]
         public Color DetectionRangeColor = Color.blue;
 
-        [Header("Health Emission Settings")]
-        public Color LowHealthColor = Color.red;
-        public Color HighHealthColor = Color.blue;
+        //[Header("Health Emission Settings")]
+        //public Color LowHealthColor = Color.red;
+        //public Color HighHealthColor = Color.blue;
 
         public UnityAction onAttack;
         public UnityAction onDetectedTarget;
@@ -216,7 +216,7 @@ namespace Unity.FPS.AI
             DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
 
             float healthRatio = m_Health.CurrentHealth / m_Health.MaxHealth;
-            Color healthEmissionColor = Color.Lerp(Color.red, Color.blue, healthRatio);
+            Color healthEmissionColor = Color.Lerp(Color.black, Color.black, healthRatio);
             Color scaledHealthEmission = healthEmissionColor * EmissionIntensity;
 
             float timeSinceHit = Time.time - m_LastTimeDamaged;
@@ -232,6 +232,7 @@ namespace Unity.FPS.AI
             {
                 finalEmissionColor = scaledHealthEmission;
             }
+            
 
             m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", finalEmissionColor);
 
@@ -266,7 +267,7 @@ namespace Unity.FPS.AI
             m_BodyFlashMaterialPropertyBlock.SetTexture("_EmissionMap", null);
             m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", finalEmissionColor);
         }
-
+       
 
 
 

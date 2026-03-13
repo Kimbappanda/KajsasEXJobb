@@ -162,8 +162,8 @@ MonoBehaviour:
   PathReachingRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   AttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
   DetectionRangeColor: {r: 0, g: 0.22837114, b: 1, a: 1}
-  LowHealthColor: {r: 1, g: 0, b: 0, a: 1}
-  HighHealthColor: {r: 0, g: 0.5900984, b: 1, a: 1}
+  LowHealthColor: {r: 0, g: 0, b: 0, a: 1}
+  HighHealthColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &4752156053906186385
 MonoBehaviour:
   m_ObjectHideFlags: 0
